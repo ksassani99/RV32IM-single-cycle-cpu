@@ -9,9 +9,9 @@ module branch_comp(
     // Combinational Logic Assign Statements
 
     // Check if Branches are Equal
-    BrEq = (data1 == data2);
+    assign BrEq = (data1 == data2);
 
     // Check if Branches are Less Than (Depending on Signed/Unsigned)
-    BrLt = BrUn ? (data1 < data2) : ($signed(data1) < $signed(data2));
-    
+    assign BrLt = BrUn ? (data1 < data2) : ($signed(data1) < $signed(data2));
+
 endmodule
