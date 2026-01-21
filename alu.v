@@ -30,54 +30,22 @@ module alu(
     // Combinational Logic Always Block
     always @(*) begin
         case (ALUSel)
-            ADD: begin
-                Result = A + B;
-            end
-            SUB: begin
-                Result = A - B;
-            end
-            AND: begin
-                Result = A & B;
-            end
-            OR: begin
-                Result = A | B;
-            end
-            XOR: begin
-                Result = A ^ B;
-            end
-            SLL: begin
-                Result = A << B[4:0];
-            end
-            SRL: begin
-                Result = A >> B[4:0];
-            end
-            SRA: begin
-                Result = $signed(A) >>> B[4:0];
-            end
-            SLT: begin
-                Result = ($signed(A) < $signed(B)) ? 32'd1 : 32'd0;
-            end
-            SLTU: begin
-                Result = (A < B) ? 32'd1 : 32'd0;
-            end
-            MUL: begin
-                Result = A * B;
-            end
-            MULH: begin
-                Result = ($signed(A) * $signed(B)) >> 32;
-            end
-            MULHSU: begin
-                Result = ($signed(A) * $signed({1'b0, B})) >> 32;
-            end
-            MULHU: begin
-                Result = (A * B) >> 32;
-            end
-            BSEL: begin
-                Result = B;
-            end
-            default: begin
-                Result = 32'd0;
-            end
+            ADD: Result = A + B;
+            SUB: Result = A - B;
+            AND: Result = A & B;
+            OR: Result = A | B;
+            XOR: Result = A ^ B;
+            SLL: Result = A << B[4:0];
+            SRL: Result = A >> B[4:0];
+            SRA: Result = $signed(A) >>> B[4:0];
+            SLT: Result = ($signed(A) < $signed(B)) ? 32'd1 : 32'd0;
+            SLTU: Result = (A < B) ? 32'd1 : 32'd0;
+            MUL: Result = A * B;
+            MULH: Result = ({{32{A[31]}}, A} * {{32{B[31]}}, B}) >> 32;
+            MULHSU: Result = ({{32{A[31]}}, A} * {32'b0, B}) >> 32;
+            MULHU: Result = ({32'b0, A} * {32'b0, B}) >> 32;
+            BSEL: Result = B;
+            default: Result = 32'd0;
         endcase
     end
 endmodule
