@@ -2,7 +2,7 @@ module alu(
     input [31:0] A,
     input [31:0] B,
     input [3:0] ALUSel,
-    output reg [31:0] Result
+    output reg [31:0] result
 );
 
     // Op Codes
@@ -15,37 +15,37 @@ module alu(
 
     localparam SLL = 4'd1;  // Shift Left Logical
     localparam SRL = 4'd5;  // Shift Right Logical
-    localparam SRA = 4'd13; // Shift Right Arithmetic
+    localparam SRA = 4'd13; // Shift Right Arithmetic (Signed)
 
     localparam SLT  = 4'd2; // Set Less Than
     localparam SLTU = 4'd3; // Set Less Than Unsigned
 
-    localparam MUL    = 4'd8;
-    localparam MULH   = 4'd9;
-    localparam MULHSU = 4'd10;
-    localparam MULHU  = 4'd11;
+    localparam MUL    = 4'd8;  // Multiply
+    localparam MULH   = 4'd9;  // Multiply High (Signed)
+    localparam MULHSU = 4'd10; // Multiply High Signed and Unsigned
+    localparam MULHU  = 4'd11; // Multiply High Unsigned
 
     localparam BSEL = 4'd15; // Used for LUI (Pass B)
 
     // Combinational Logic Always Block
     always @(*) begin
         case (ALUSel)
-            ADD: Result = A + B;
-            SUB: Result = A - B;
-            AND: Result = A & B;
-            OR: Result = A | B;
-            XOR: Result = A ^ B;
-            SLL: Result = A << B[4:0];
-            SRL: Result = A >> B[4:0];
-            SRA: Result = $signed(A) >>> B[4:0];
-            SLT: Result = ($signed(A) < $signed(B)) ? 32'd1 : 32'd0;
-            SLTU: Result = (A < B) ? 32'd1 : 32'd0;
-            MUL: Result = A * B;
-            MULH: Result = ({{32{A[31]}}, A} * {{32{B[31]}}, B}) >> 32;
-            MULHSU: Result = ({{32{A[31]}}, A} * {32'b0, B}) >> 32;
-            MULHU: Result = ({32'b0, A} * {32'b0, B}) >> 32;
-            BSEL: Result = B;
-            default: Result = 32'd0;
+            ADD: result = A + B;
+            SUB: result = A - B;
+            AND: result = A & B;
+            OR: result = A | B;
+            XOR: result = A ^ B;
+            SLL: result = A << B[4:0];
+            SRL: result = A >> B[4:0];
+            SRA: result = $signed(A) >>> B[4:0];
+            SLT: result = ($signed(A) < $signed(B)) ? 32'd1 : 32'd0;
+            SLTU: result = (A < B) ? 32'd1 : 32'd0;
+            MUL: result = A * B;
+            MULH: result = ({{32{A[31]}}, A} * {{32{B[31]}}, B}) >> 32;
+            MULHSU: result = ({{32{A[31]}}, A} * {32'b0, B}) >> 32;
+            MULHU: result = ({32'b0, A} * {32'b0, B}) >> 32;
+            BSEL: result = B;
+            default: result = 32'd0;
         endcase
     end
 endmodule
