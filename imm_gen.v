@@ -22,4 +22,5 @@ module imm_gen(
             default: imm = 32'b0;
         endcase
     end
+    
 endmodule

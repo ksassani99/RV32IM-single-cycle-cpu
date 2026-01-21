@@ -48,4 +48,5 @@ module alu(
             default: result = 32'd0;
         endcase
     end
+    
 endmodule
