@@ -2,7 +2,7 @@
 
 (in-progress) A synthesizable, single-cycle 32-bit RISC-V processor core designed in Verilog. This implementation is based on the **UC Berkeley CS 61C "Project 3"** datapath specifications but expands upon the standard educational curriculum by integrating the **RV32M Standard Extension** (Multiplication Subset) and robust signed/unsigned arithmetic handling.
 
-## 🚀 Key Technical Features
+## Key Technical Features
 
 * **ISA Compliance:** Implements the **RV32I** Base Integer Set and a subset of the **RV32M** Extension.
 
@@ -14,7 +14,7 @@
 
 * **Branching:** Signed and unsigned comparison logic for conditional branching (`BEQ`, `BNE`, `BLT`, `BGE`, `BLTU`, `BGEU`).
 
-## 🏗️ Processor Architecture
+## Processor Architecture
 
 The core utilizes a classic single-cycle datapath architecture, utilizing separate instruction and data memory interfaces.
 
@@ -34,7 +34,7 @@ Although this is a single-cycle processor (where the CPI is 1), the combinationa
 
 5. **Writeback:** The result (from ALU, Memory, or PC+4) is selected and written back into the destination register (`rd`) in the `RegFile`.
 
-## 📂 System Architecture & File List
+## System Architecture & File List
 
 The project is modularized to correspond with the standard RISC-V datapath components.
 
@@ -64,7 +64,7 @@ The project is modularized to correspond with the standard RISC-V datapath compo
 
 * **`tb_cpu.v`:** System Testbench. Generates clock/reset signals and loads hex programs into instruction memory to verify the core against reference outputs.
 
-## 💻 Supported Instruction Set (RV32IM Subset)
+## Supported Instruction Set (RV32IM Subset)
 
 | **Type** | **Syntax** | **Instructions Implemented** | 
 | :--- | :--- | :--- |
