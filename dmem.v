@@ -4,7 +4,7 @@ module dmem(
     input [31:0] addr,        // address input
     input [31:0] dataW,       // data input (for potential writing)
     input [3:0] MemWriteMask, // comes from partial_store, tells memory which bytes to overwrite
-    output [31:0] dataR.      // data read output
+    output [31:0] dataR       // data read output
 );
 
     // 64KB Memory: 16,384 words of 32 bits each (Using Verilog Array)
