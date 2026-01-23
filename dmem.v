@@ -7,7 +7,7 @@ module dmem(
     output [31:0] dataR       // data read output
 );
 
-    // 64KB Memory: 16,384 words of 32 bits each (Using Verilog Array)
+    // 64KB Memory: 16,384 words of 32 bits each (Using 2D Verilog Array)
     reg [31:0] ram [0:16383];
 
     // Address Transformation:
